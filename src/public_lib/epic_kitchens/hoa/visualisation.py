@@ -1,3 +1,4 @@
+"""Tools for visualising hand-object detections"""
 import os
 import warnings
 from copy import deepcopy

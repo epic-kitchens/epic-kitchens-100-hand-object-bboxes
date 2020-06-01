@@ -1,6 +1,8 @@
+"""The core set of types that represent hand-object detections"""
+
 from enum import Enum, unique
 from itertools import chain
-from typing import Dict, Iterator, List, Optional, Tuple, cast
+from typing import Dict, Iterator, List, Tuple, cast
 
 import numpy as np
 from dataclasses import dataclass
