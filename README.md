@@ -19,6 +19,14 @@ Install the library like so:
 $ python setup.py install
 ```
 
+To hack on it, just install with
+
+```console
+$ python setup.py develop
+```
+
+and edit the files within the repo.
+
 ## Downloads
 
 We provide the detections for all frames in EPIC Kitchens. These are avaiable to
