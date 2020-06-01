@@ -49,3 +49,19 @@ We have found the following settings to produce good qualitative results:
 - hand threshold: 0.5
 - object threshold: 0.5
  
+ 
+## Processing raw detections
+
+The raw detections follow a different schema to those that we release. We simply
+persist the raw hand and object detections without any preprocessing in case we
+need to apply any corrective post-processing.
+
+Subsequently we need to convert these into the schema that we release in.
+
+A [`Snakefile`](./Snakefile) is provided for use with [`snakemake`](https://snakemake.readthedocs.io/en/stable/). 
+This handles:
+
+1. aggregating per-frame extractions into per-video extractions
+2. converting the raw detections to the public detection schema.
+
+The scripts that are used to perform these tasks live in `src/scripts`.
