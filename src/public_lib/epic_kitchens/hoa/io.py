@@ -36,6 +36,6 @@ def save_detections(
     """
     import pickle
 
-    path.mkdir(parents=True, exist_ok=True)
+    path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "wb") as f:
         pickle.dump([d.to_protobuf().SerializeToString() for d in detections], f)
