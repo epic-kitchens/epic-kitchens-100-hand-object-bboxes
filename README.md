@@ -1,4 +1,5 @@
 # EPIC Hand-object detections
+[![Documentation Status](https://readthedocs.org/projects/epic-hand-object-detections/badge/?version=latest)](https://epic-hand-object-detections.readthedocs.io/en/latest/?badge=latest)
 
 This repository contains a supporting library for using the hand-object
 detections we extracted from
