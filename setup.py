@@ -137,6 +137,7 @@ setup(
     # projects.
     extras_require={  # Optional
         'demo': ['ipykernel', 'ipywidgets'],
+        'docs': ['sphinx-autoapi', 'sphinx_rtd_theme', 'sphinx_autodoc_typehints']
     },
 
     # If there are data files included in your packages that need to be
