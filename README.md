@@ -11,7 +11,8 @@ detections we extracted from
 ## Library
 
 This repository contains supporting code for using hand-object detections which are
-stored in binary protobuf files. The schema can be found in [`src/public_lib/types.proto`](./src/public_lib/types.proto).
+stored in binary protobuf files. The schema can be found in [`src/public_lib
+/epic_kitchens/hoa/types.proto`](./src/public_lib/epic_kitchens/hoa/types.proto).
 
 Install the library like so:
 
