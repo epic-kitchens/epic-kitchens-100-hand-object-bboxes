@@ -1,0 +1,5 @@
+numpy
+Pillow
+sphinx-autoapi
+sphinx-autodoc-typehints
+sphinx_rtd_theme
