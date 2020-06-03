@@ -1,5 +1,6 @@
 import os.path
 import sys
+import pandas as pd
 import re
 from pathlib import Path
 from typing import Dict, Iterator, List, Union
@@ -33,6 +34,13 @@ def extract_ids(video_name: str) -> Dict[str, str]:
         'video': f'P{matches.group(1)}_{matches.group(2)}',
     }
 
+video_lengths = pd.read_csv('EPIC_100_frame_counts.csv', index_col='video_id')['rgb_n_frames']
+
+
+def get_n_frames_for_video(video_id: str) -> int:
+    return video_lengths.loc[video_id]
+
+
 rule all:
     input: [f'{DATA_PROCESSED}/{ids["person"]}/{ids["video"]}.pkl' \
             for ids in map(extract_ids, videos)]
@@ -53,3 +61,17 @@ rule convert_raw_detections_to_releasable_detections:
         """
         python src/scripts/convert_raw_to_releasable_detections.py {input} {output}
         """
+
+rule check_video_detections:
+    input: DATA_PROCESSED + '/{person_id}/{video_id}.pkl'
+    output: DATA_PROCESSED + '/{person_id}/.{video_id}.check'
+    params:
+        n_frames=lambda wildcards: get_n_frames_for_video(wildcards.video_id)
+    shell:
+         """
+         python src/scripts/check_data.py {input} --n-frames {params.n_frames} && touch {output}
+         """
+
+rule checks:
+    input: [f'{DATA_PROCESSED}/{ids["person"]}/.{ids["video"]}.check' \
+            for ids in map(extract_ids, videos)]
