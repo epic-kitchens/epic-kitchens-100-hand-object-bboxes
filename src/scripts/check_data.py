@@ -75,24 +75,24 @@ class DetectionChecker:
     def check_bbox(self, bbox: BBox) -> None:
         for coord in [
             "top_left_x",
-            "top_left_y",
-            "bottom_right_x",
-            "bottom_right_y",
+            "top",
+            "right",
+            "bottom",
         ]:
             value = getattr(bbox, coord)
             if not (0 <= value <= 1):
                 raise ValueError(f"Expected bbox {coord} ({value}) to be between 0--1.")
 
-        if not (bbox.top_left_x <= bbox.bottom_right_x):
+        if not (bbox.top_left_x <= bbox.right):
             raise ValueError(
                 f"Expected bbox top_left_x ({bbox.top_left_x}) to be "
-                f"less than or equal to bottom_right_x ({bbox.bottom_right_x}"
+                f"less than or equal to right ({bbox.right}"
             )
 
-        if not (bbox.top_left_y <= bbox.bottom_right_y):
+        if not (bbox.top <= bbox.bottom):
             raise ValueError(
-                f"Expected bbox top_left_y ({bbox.top_left_y}) to be "
-                f"less than or equal to bottom_right_y ({bbox.bottom_right_y}"
+                f"Expected bbox top ({bbox.top}) to be "
+                f"less than or equal to bottom ({bbox.bottom}"
             )
 
     def check_vector(self, vector: FloatVector) -> None:

@@ -15,9 +15,9 @@ from epic_kitchens.hoa.types import (
 
 def assert_bbox_close(expected_bbox: BBox, actual_bbox: BBox):
     assert_close(expected_bbox.top_left_x, actual_bbox.top_left_x)
-    assert_close(expected_bbox.top_left_y, actual_bbox.top_left_y)
-    assert_close(expected_bbox.bottom_right_x, actual_bbox.bottom_right_x)
-    assert_close(expected_bbox.bottom_right_y, actual_bbox.bottom_right_y)
+    assert_close(expected_bbox.top, actual_bbox.top)
+    assert_close(expected_bbox.right, actual_bbox.right)
+    assert_close(expected_bbox.bottom, actual_bbox.bottom)
 
 
 def assert_float_vector_close(

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0btypes.proto\x12\x10model.detections\"#\n\x0b\x46loatVector\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\"^\n\x04\x42\x42ox\x12\x12\n\ntop_left_x\x18\x01 \x01(\x02\x12\x12\n\ntop_left_y\x18\x02 \x01(\x02\x12\x16\n\x0e\x62ottom_right_x\x18\x03 \x01(\x02\x12\x16\n\x0e\x62ottom_right_y\x18\x04 \x01(\x02\"\xfc\x02\n\rHandDetection\x12$\n\x04\x62\x62ox\x18\x01 \x01(\x0b\x32\x16.model.detections.BBox\x12\r\n\x05score\x18\x02 \x01(\x02\x12\x38\n\x05state\x18\x03 \x01(\x0e\x32).model.detections.HandDetection.HandState\x12\x34\n\robject_offset\x18\x04 \x01(\x0b\x32\x1d.model.detections.FloatVector\x12\x36\n\x04side\x18\x05 \x01(\x0e\x32(.model.detections.HandDetection.HandSide\"m\n\tHandState\x12\x0e\n\nNO_CONTACT\x10\x00\x12\x10\n\x0cSELF_CONTACT\x10\x01\x12\x12\n\x0e\x41NOTHER_PERSON\x10\x02\x12\x13\n\x0fPORTABLE_OBJECT\x10\x03\x12\x15\n\x11STATIONARY_OBJECT\x10\x04\"\x1f\n\x08HandSide\x12\x08\n\x04LEFT\x10\x00\x12\t\n\x05RIGHT\x10\x01\"F\n\x0fObjectDetection\x12$\n\x04\x62\x62ox\x18\x01 \x01(\x0b\x32\x16.model.detections.BBox\x12\r\n\x05score\x18\x02 \x01(\x02\"\x98\x01\n\nDetections\x12\x10\n\x08video_id\x18\x01 \x01(\t\x12\x14\n\x0c\x66rame_number\x18\x02 \x01(\x05\x12.\n\x05hands\x18\x03 \x03(\x0b\x32\x1f.model.detections.HandDetection\x12\x32\n\x07objects\x18\x04 \x03(\x0b\x32!.model.detections.ObjectDetectionb\x06proto3'
+  serialized_pb=b'\n\x0btypes.proto\x12\x10model.detections\"#\n\x0b\x46loatVector\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\"F\n\x04\x42\x42ox\x12\x12\n\ntop_left_x\x18\x01 \x01(\x02\x12\x0b\n\x03top\x18\x02 \x01(\x02\x12\r\n\x05right\x18\x03 \x01(\x02\x12\x0e\n\x06\x62ottom\x18\x04 \x01(\x02\"\xfc\x02\n\rHandDetection\x12$\n\x04\x62\x62ox\x18\x01 \x01(\x0b\x32\x16.model.detections.BBox\x12\r\n\x05score\x18\x02 \x01(\x02\x12\x38\n\x05state\x18\x03 \x01(\x0e\x32).model.detections.HandDetection.HandState\x12\x34\n\robject_offset\x18\x04 \x01(\x0b\x32\x1d.model.detections.FloatVector\x12\x36\n\x04side\x18\x05 \x01(\x0e\x32(.model.detections.HandDetection.HandSide\"m\n\tHandState\x12\x0e\n\nNO_CONTACT\x10\x00\x12\x10\n\x0cSELF_CONTACT\x10\x01\x12\x12\n\x0e\x41NOTHER_PERSON\x10\x02\x12\x13\n\x0fPORTABLE_OBJECT\x10\x03\x12\x15\n\x11STATIONARY_OBJECT\x10\x04\"\x1f\n\x08HandSide\x12\x08\n\x04LEFT\x10\x00\x12\t\n\x05RIGHT\x10\x01\"F\n\x0fObjectDetection\x12$\n\x04\x62\x62ox\x18\x01 \x01(\x0b\x32\x16.model.detections.BBox\x12\r\n\x05score\x18\x02 \x01(\x02\"\x98\x01\n\nDetections\x12\x10\n\x08video_id\x18\x01 \x01(\t\x12\x14\n\x0c\x66rame_number\x18\x02 \x01(\x05\x12.\n\x05hands\x18\x03 \x03(\x0b\x32\x1f.model.detections.HandDetection\x12\x32\n\x07objects\x18\x04 \x03(\x0b\x32!.model.detections.ObjectDetectionb\x06proto3'
 )
 
 
@@ -59,8 +59,8 @@ _HANDDETECTION_HANDSTATE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=405,
-  serialized_end=514,
+  serialized_start=381,
+  serialized_end=490,
 )
 _sym_db.RegisterEnumDescriptor(_HANDDETECTION_HANDSTATE)
 
@@ -84,8 +84,8 @@ _HANDDETECTION_HANDSIDE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=516,
-  serialized_end=547,
+  serialized_start=492,
+  serialized_end=523,
 )
 _sym_db.RegisterEnumDescriptor(_HANDDETECTION_HANDSIDE)
 
@@ -145,21 +145,21 @@ _BBOX = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='top_left_y', full_name='model.detections.BBox.top_left_y', index=1,
+      name='top', full_name='model.detections.BBox.top', index=1,
       number=2, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='bottom_right_x', full_name='model.detections.BBox.bottom_right_x', index=2,
+      name='right', full_name='model.detections.BBox.right', index=2,
       number=3, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='bottom_right_y', full_name='model.detections.BBox.bottom_right_y', index=3,
+      name='bottom', full_name='model.detections.BBox.bottom', index=3,
       number=4, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
@@ -178,7 +178,7 @@ _BBOX = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=70,
-  serialized_end=164,
+  serialized_end=140,
 )
 
 
@@ -239,8 +239,8 @@ _HANDDETECTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=167,
-  serialized_end=547,
+  serialized_start=143,
+  serialized_end=523,
 )
 
 
@@ -278,8 +278,8 @@ _OBJECTDETECTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=549,
-  serialized_end=619,
+  serialized_start=525,
+  serialized_end=595,
 )
 
 
@@ -331,8 +331,8 @@ _DETECTIONS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=622,
-  serialized_end=774,
+  serialized_start=598,
+  serialized_end=750,
 )
 
 _HANDDETECTION.fields_by_name['bbox'].message_type = _BBOX

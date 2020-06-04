@@ -82,16 +82,16 @@ class FloatVector:
 @dataclass
 class BBox:
     top_left_x: float
-    top_left_y: float
-    bottom_right_x: float
-    bottom_right_y: float
+    top: float
+    right: float
+    bottom: float
 
     def to_protobuf(self) -> pb.BBox:
         bbox = pb.BBox()
         bbox.top_left_x = self.top_left_x
-        bbox.top_left_y = self.top_left_y
-        bbox.bottom_right_x = self.bottom_right_x
-        bbox.bottom_right_y = self.bottom_right_y
+        bbox.top = self.top
+        bbox.right = self.right
+        bbox.bottom = self.bottom
         assert bbox.IsInitialized()
         return bbox
 
@@ -99,15 +99,15 @@ class BBox:
     def from_protobuf(bbox: pb.BBox) -> "BBox":
         return BBox(
             top_left_x=bbox.top_left_x,
-            top_left_y=bbox.top_left_y,
-            bottom_right_x=bbox.bottom_right_x,
-            bottom_right_y=bbox.bottom_right_y,
+            top=bbox.top,
+            right=bbox.right,
+            bottom=bbox.bottom,
         )
 
     @property
     def center(self) -> Tuple[float, float]:
-        x = (self.top_left_x + self.bottom_right_x) / 2
-        y = (self.top_left_y + self.bottom_right_y) / 2
+        x = (self.top_left_x + self.right) / 2
+        y = (self.top + self.bottom) / 2
         return x, y
 
     @property
@@ -118,9 +118,9 @@ class BBox:
 
     def scale(self, width_factor: float = 1, height_factor: float = 1) -> None:
         self.top_left_x *= width_factor
-        self.bottom_right_x *= width_factor
-        self.top_left_y *= height_factor
-        self.bottom_right_y *= height_factor
+        self.right *= width_factor
+        self.top *= height_factor
+        self.bottom *= height_factor
 
     @property
     def coords(self) -> Tuple[Tuple[float, float], Tuple[float, float]]:
@@ -138,19 +138,19 @@ class BBox:
 
     @property
     def top_left(self) -> Tuple[float, float]:
-        return (self.top_left_x, self.top_left_y)
+        return (self.top_left_x, self.top)
 
     @property
     def bottom_right(self) -> Tuple[float, float]:
-        return (self.bottom_right_x, self.bottom_right_y)
+        return (self.right, self.bottom)
 
     @property
     def top_left_int(self) -> Tuple[int, int]:
-        return (round(self.top_left_x), round(self.top_left_y))
+        return (round(self.top_left_x), round(self.top))
 
     @property
     def bottom_right_int(self) -> Tuple[int, int]:
-        return (round(self.bottom_right_x), round(self.bottom_right_y))
+        return (round(self.right), round(self.bottom))
 
 
 @dataclass

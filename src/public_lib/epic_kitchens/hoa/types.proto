@@ -8,9 +8,9 @@ message FloatVector {
 
 message BBox {
     float top_left_x = 1;
-    float top_left_y = 2;
-    float bottom_right_x = 3;
-    float bottom_right_y = 4;
+    float top = 2;
+    float right = 3;
+    float bottom = 4;
 }
 
 message HandDetection {

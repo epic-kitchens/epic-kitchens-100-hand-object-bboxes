@@ -202,9 +202,9 @@ class HandDetection:
         # detection:
         # [
         #  0:top_left_x,
-        #  1:top_left_y,
-        #  2:bottom_right_x,
-        #  3:bottom_right_y,
+        #  1:top,
+        #  2:right,
+        #  3:bottom,
         #  4:score,
         #  5:hand_state,
         #  6:hand_vector_magnitude,
@@ -263,9 +263,9 @@ class ObjectDetection:
         # detection:
         # [
         #  0:top_left_x,
-        #  1:top_left_y,
-        #  2:bottom_right_x,
-        #  3:bottom_right_y,
+        #  1:top,
+        #  2:right,
+        #  3:bottom,
         #  4:score,
         #  5:hand_state,               # unused
         #  6:hand_vector_magnitude,    # unused
@@ -402,9 +402,9 @@ class FrameDetections:
 
 
 def _make_bbox(detection: List[np.float32]) -> BBox:
-    top_left_x, top_left_y, bottom_right_x, bottom_right_y = detection[:4]
-    width = int(np.round(bottom_right_x - top_left_x))
-    height = int(np.round(bottom_right_y - top_left_y))
+    top_left_x, top, right, bottom = detection[:4]
+    width = int(np.round(right - top_left_x))
+    height = int(np.round(bottom - top))
     x = int(np.round(top_left_x))
-    y = int(np.round(top_left_y))
+    y = int(np.round(top))
     return BBox(IntCoordinate(x=x, y=y), width=width, height=height)
