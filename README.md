@@ -31,7 +31,7 @@ and edit the files within the repo.
 ## Downloads
 
 We provide the detections for all frames in EPIC Kitchens. These are avaiable to
-download from [data.bris]().
+download from [data.bris](https://data.bris.ac.uk/data/dataset/3l8eci2oqgst92n14w2yqi5ytu).
 
 ## Model setup
 
