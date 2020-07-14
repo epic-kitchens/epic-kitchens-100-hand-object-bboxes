@@ -4,7 +4,8 @@
 This repository contains a supporting library for using the hand-object
 detections we extracted from
 [ddshan/Hand_Object_Detector](https://github.com/ddshan/Hand_Object_Detector)
-(CVPR 2020).
+([CVPR
+2020](https://openaccess.thecvf.com/content_CVPR_2020/html/Shan_Understanding_Human_Hands_in_Contact_at_Internet_Scale_CVPR_2020_paper.html)).
 
 ![EPIC-detection](./docs/media/hand-object-detection-example.png)
 
@@ -32,6 +33,8 @@ and edit the files within the repo.
 
 We provide the detections for all frames in EPIC Kitchens. These are avaiable to
 download from [data.bris](https://data.bris.ac.uk/data/dataset/3l8eci2oqgst92n14w2yqi5ytu).
+
+---
 
 ## Model setup
 
