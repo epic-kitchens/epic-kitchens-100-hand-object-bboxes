@@ -8,7 +8,7 @@ here = path.abspath(path.dirname(__file__))
 # Arguments marked as "Required" below must be included for upload to PyPI.
 # Fields marked as "Optional" may be commented out.
 
-gh_url = 'https://github.com/epic-kitchens/epic-hand-object-detections'
+gh_url = 'https://github.com/epic-kitchens/epic-kitchens-100-hand-object-bboxes'
 setup(
     # This is the name of your project. The first time you publish this
     # package, this name will be registered for you. It will determine how

@@ -17,7 +17,7 @@ Installation
 
 .. code-block:: bash
 
-    $ pip install git+https://github.com/epic-kitchens/epic-hand-object-detections.git
+    $ pip install git+https://github.com/epic-kitchens/epic-kitchens-100-hand-object-bboxes.git
 
 Usage
 -----
