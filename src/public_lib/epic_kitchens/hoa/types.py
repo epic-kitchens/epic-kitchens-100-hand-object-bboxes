@@ -7,7 +7,7 @@ from typing import Dict, Iterator, List, Tuple, cast
 import numpy as np
 from dataclasses import dataclass
 
-from . import types_pb2 as pb
+import epic_kitchens.hoa.types_pb2 as pb
 
 __all__ = [
     "HandSide",
