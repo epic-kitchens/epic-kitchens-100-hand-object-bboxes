@@ -73,6 +73,7 @@ class DetectionChecker:
             raise ValueError(f"Expected score to be between 0--1 but was {score}")
 
     def check_bbox(self, bbox: BBox) -> None:
+
         for coord in [
             "top_left_x",
             "top",
@@ -83,9 +84,9 @@ class DetectionChecker:
             if not (0 <= value <= 1):
                 raise ValueError(f"Expected bbox {coord} ({value}) to be between 0--1.")
 
-        if not (bbox.top_left_x <= bbox.right):
+        if not (bbox.left <= bbox.right):
             raise ValueError(
-                f"Expected bbox top_left_x ({bbox.top_left_x}) to be "
+                f"Expected bbox top_left_x ({bbox.left}) to be "
                 f"less than or equal to right ({bbox.right}"
             )
 

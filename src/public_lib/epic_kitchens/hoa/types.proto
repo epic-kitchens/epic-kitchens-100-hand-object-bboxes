@@ -7,7 +7,7 @@ message FloatVector {
 }
 
 message BBox {
-    float top_left_x = 1;
+    float left = 1;
     float top = 2;
     float right = 3;
     float bottom = 4;

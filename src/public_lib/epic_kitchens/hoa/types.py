@@ -81,14 +81,14 @@ class FloatVector:
 
 @dataclass
 class BBox:
-    top_left_x: float
+    left: float
     top: float
     right: float
     bottom: float
 
     def to_protobuf(self) -> pb.BBox:
         bbox = pb.BBox()
-        bbox.top_left_x = self.top_left_x
+        bbox.left = self.left
         bbox.top = self.top
         bbox.right = self.right
         bbox.bottom = self.bottom
@@ -98,7 +98,7 @@ class BBox:
     @staticmethod
     def from_protobuf(bbox: pb.BBox) -> "BBox":
         return BBox(
-            top_left_x=bbox.top_left_x,
+            left=bbox.left,
             top=bbox.top,
             right=bbox.right,
             bottom=bbox.bottom,
@@ -106,7 +106,7 @@ class BBox:
 
     @property
     def center(self) -> Tuple[float, float]:
-        x = (self.top_left_x + self.right) / 2
+        x = (self.left + self.right) / 2
         y = (self.top + self.bottom) / 2
         return x, y
 
@@ -117,10 +117,19 @@ class BBox:
         return (round(x), round(y))
 
     def scale(self, width_factor: float = 1, height_factor: float = 1) -> None:
-        self.top_left_x *= width_factor
+        self.left *= width_factor
         self.right *= width_factor
         self.top *= height_factor
         self.bottom *= height_factor
+
+    def center_scale(self, width_factor: float = 1, height_factor: float = 1) -> None:
+        x, y = self.center
+        new_width = self.width * width_factor
+        new_height = self.height * height_factor
+        self.left = x - new_width / 2
+        self.right = x + new_width / 2
+        self.top = y - new_height / 2
+        self.bottom = y + new_height / 2
 
     @property
     def coords(self) -> Tuple[Tuple[float, float], Tuple[float, float]]:
@@ -137,8 +146,16 @@ class BBox:
         )
 
     @property
+    def width(self) -> float:
+        return self.right - self.left
+
+    @property
+    def height(self) -> float:
+        return self.bottom - self.top
+
+    @property
     def top_left(self) -> Tuple[float, float]:
-        return (self.top_left_x, self.top)
+        return (self.left, self.top)
 
     @property
     def bottom_right(self) -> Tuple[float, float]:
@@ -146,7 +163,7 @@ class BBox:
 
     @property
     def top_left_int(self) -> Tuple[int, int]:
-        return (round(self.top_left_x), round(self.top))
+        return (round(self.left), round(self.top))
 
     @property
     def bottom_right_int(self) -> Tuple[int, int]:
@@ -190,6 +207,9 @@ class HandDetection:
         self.bbox.scale(width_factor=width_factor, height_factor=height_factor)
         self.object_offset.scale(width_factor=width_factor, height_factor=height_factor)
 
+    def center_scale(self, width_factor: float = 1, height_factor: float = 1) -> None:
+        self.bbox.center_scale(width_factor=width_factor, height_factor=height_factor)
+
 
 
 @dataclass
@@ -215,6 +235,9 @@ class ObjectDetection:
 
     def scale(self, width_factor: float = 1, height_factor: float = 1) -> None:
         self.bbox.scale(width_factor=width_factor, height_factor=height_factor)
+
+    def center_scale(self, width_factor: float = 1, height_factor: float = 1) -> None:
+        self.bbox.center_scale(width_factor=width_factor, height_factor=height_factor)
 
 
 @dataclass
@@ -294,3 +317,10 @@ class FrameDetections:
         """
         for det in chain(self.hands, self.objects):
             det.scale(width_factor=width_factor, height_factor=height_factor)
+
+    def center_scale(self, width_factor: float = 1, height_factor: float = 1) -> None:
+        """
+        Scale all the hands/objects about their center points.
+        """
+        for det in chain(self.hands, self.objects):
+            det.center_scale(width_factor=width_factor, height_factor=height_factor)
