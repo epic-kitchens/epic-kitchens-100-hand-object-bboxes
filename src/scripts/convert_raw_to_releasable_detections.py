@@ -106,13 +106,13 @@ class Converter:
         def clip(x: float) -> float:
             return float(np.clip(x, 0, 1))
 
-        top_left_x = clip(bbox.top_left.x / self.frame_width)
+        left = clip(bbox.top_left.x / self.frame_width)
         top = clip(bbox.top_left.y / self.frame_height)
         right = clip((bbox.top_left.x + bbox.width) / self.frame_width)
         bottom = clip((bbox.top_left.y + bbox.height) / self.frame_height)
 
         new_bbox = ReleasableBBox(
-            top_left_x=top_left_x,
+            left=left,
             top=top,
             right=right,
             bottom=bottom,
