@@ -34,6 +34,12 @@ and edit the files within the repo.
 We provide the detections for all frames in EPIC Kitchens. These are avaiable to
 download from [data.bris](https://data.bris.ac.uk/data/dataset/3l8eci2oqgst92n14w2yqi5ytu).
 
+Please manually download the detections for P27_103 and P01_109 from
+- https://www.dropbox.com/s/fjvhpd4o9l2n08y/P01_109.pkl?dl=0
+- https://www.dropbox.com/s/ocvy4fskv9j8xmt/P27_103.pkl?dl=0
+
+The ones on data.bris were incorrectly extracted.
+
 ---
 
 ## Model setup
