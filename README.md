@@ -9,6 +9,10 @@ detections we extracted from
 
 ![EPIC-detection](./docs/media/hand-object-detection-example.png)
 
+Check out the [notebook](./notebooks/demo.ipynb) for usage:
+
+[![Notebook snapshot](./notebooks/ho-nb.png)](./notebooks/demo.ipynb)
+
 ## Library
 
 This repository contains supporting code for using hand-object detections which are
