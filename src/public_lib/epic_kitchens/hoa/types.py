@@ -299,6 +299,7 @@ class FrameDetections:
             if (
                 hand_detection.state.value == HandState.NO_CONTACT.value
                 or hand_detection.score <= hand_threshold
+                or len(object_centers) == 0
             ):
                 continue
             estimated_object_position = (
