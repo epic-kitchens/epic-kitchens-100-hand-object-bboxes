@@ -193,7 +193,7 @@ class DetectionRenderer:
         )
         box_coords = [top_left, bottom_right]
         draw.rectangle(
-            box_coords, fill=background_color, outQline=outline_color, width=self.border,
+            box_coords, fill=background_color, outline=outline_color, width=self.border,
         )
         text_coordinate = (
             x + self.border + padding - offset_x,
