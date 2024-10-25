@@ -182,7 +182,8 @@ class DetectionRenderer:
         text_color: Tuple[int, int, int] = (0, 0, 0),
     ):
         text_size = draw.textsize(text, font=self.font)
-        offset_x, offset_y = self.font.getoffset(text)
+        offset_x, offset_y, _, _ = self.font.getbbox(text)
+    
         text_width = text_size[0] + offset_x
         text_height = text_size[1] + offset_y
         x, y = top_left
@@ -192,7 +193,7 @@ class DetectionRenderer:
         )
         box_coords = [top_left, bottom_right]
         draw.rectangle(
-            box_coords, fill=background_color, outline=outline_color, width=self.border,
+            box_coords, fill=background_color, outQline=outline_color, width=self.border,
         )
         text_coordinate = (
             x + self.border + padding - offset_x,
