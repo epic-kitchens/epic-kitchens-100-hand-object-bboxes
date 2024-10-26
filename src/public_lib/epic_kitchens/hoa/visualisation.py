@@ -182,7 +182,8 @@ class DetectionRenderer:
         text_color: Tuple[int, int, int] = (0, 0, 0),
     ):
         text_size = draw.textsize(text, font=self.font)
-        offset_x, offset_y = self.font.getoffset(text)
+        offset_x, offset_y, _, _ = self.font.getbbox(text)
+    
         text_width = text_size[0] + offset_x
         text_height = text_size[1] + offset_y
         x, y = top_left
